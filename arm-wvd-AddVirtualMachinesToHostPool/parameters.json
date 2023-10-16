@@ -5,50 +5,67 @@
         "artifactsLocation": {
             "value": "https://wvdportalstorageblob.blob.core.windows.net/galleryartifacts/Configuration_1.0.02454.213.zip"
         },
-        "intune": {
-            "value": false
+        "nestedTemplatesLocation": {
+            "value": "https://wvdportalstorageblob.blob.core.windows.net/galleryartifacts/armtemplates/Hostpool_1.0.02454.213/nestedTemplates/"
         },
         "hostpoolName": {
             "value": "devopstest"
         },
-        "hostpoolDescription": {
-            "value": "Created through the Azure Virtual Desktop extension"
+        "hostpoolProperties": {
+            "value": {
+                "agentUpdate": null,
+                "friendlyName": null,
+                "description": "Created through the Azure Virtual Desktop extension",
+                "hostPoolType": "Pooled",
+                "personalDesktopAssignmentType": null,
+                "applicationGroupReferences": [
+                    "/subscriptions/171acb1b-5979-4f2a-8ba8-3a4fd4d72b68/resourcegroups/RG-TEST/providers/Microsoft.DesktopVirtualization/applicationgroups/devopstest-DAG"
+                ],
+                "appAttachPackageReferences": [],
+                "customRdpProperty": "drivestoredirect:s:*;audiomode:i:0;videoplaybackmode:i:1;redirectclipboard:i:1;redirectprinters:i:1;devicestoredirect:s:*;redirectcomports:i:1;redirectsmartcards:i:1;usbdevicestoredirect:s:*;enablecredsspsupport:i:1;redirectwebauthn:i:1;use multimon:i:1;",
+                "maxSessionLimit": 10,
+                "loadBalancerType": "BreadthFirst",
+                "validationEnvironment": true,
+                "ring": null,
+                "registrationInfo": null,
+                "vmTemplate": "{\"domain\":\"roch.fisherassoc.com\",\"galleryImageOffer\":null,\"galleryImagePublisher\":null,\"galleryImageSKU\":null,\"imageType\":\"CustomImage\",\"customImageId\":\"/subscriptions/171acb1b-5979-4f2a-8ba8-3a4fd4d72b68/resourceGroups/RG-AVD-EUS2/providers/Microsoft.Compute/galleries/FisherAssociatesAVDImages/images/NV5MultiSessionEnergyLandscape/versions/0.1.6\",\"namePrefix\":\"devopvmtst\",\"osDiskType\":\"StandardSSD_LRS\",\"vmSize\":{\"id\":\"Standard_NV6ads_A10_v5\",\"cores\":6,\"ram\":55,\"rdmaEnabled\":false,\"supportsMemoryPreservingMaintenance\":false},\"galleryItemId\":null,\"hibernate\":false,\"diskSizeGB\":0,\"securityType\":\"Standard\",\"secureBoot\":false,\"vTPM\":false}",
+                "preferredAppGroupType": "Desktop",
+                "migrationRequest": null,
+                "cloudPcResource": false,
+                "startVMOnConnect": false,
+                "ssoadfsAuthority": null,
+                "ssoClientId": null,
+                "ssoClientSecretKeyVaultPath": null,
+                "ssoSecretType": null,
+                "objectId": "0b089720-7143-45a4-9a74-a5e79d630a0f"
+            }
         },
-        "location": {
+        "hostpoolResourceGroup": {
+            "value": "RG-TEST"
+        },
+        "hostpoolLocation": {
             "value": "eastus2"
         },
-        "validationEnvironment": {
-            "value": true
+        "hostpoolToken": {
+            "value": null
         },
-        "hostpoolType": {
-            "value": "Pooled"
-        },
-        "loadBalancerType": {
-            "value": "BreadthFirst"
-        },
-        "preferredAppGroupType": {
-            "value": "Desktop"
-        },
-        "publicNetworkAccess": {
-            "value": "Enabled"
+        "vmInitialNumber": {
+            "value": 1
         },
         "vmResourceGroup": {
             "value": "RG-TEST"
         },
-        "vmNamePrefix": {
-            "value": "devopvmtst"
-        },
         "vmLocation": {
             "value": "eastus2"
         },
-        "vmImageType": {
-            "value": "CustomImage"
-        },
-        "vmSize": {
-            "value": "Standard_NV6ads_A10_v5"
+        "vmNamePrefix": {
+            "value": "devopvmtst"
         },
         "vmNumberOfInstances": {
             "value": 1
+        },
+        "vmSize": {
+            "value": "Standard_NV6ads_A10_v5"
         },
         "vmDiskType": {
             "value": "StandardSSD_LRS"
@@ -59,10 +76,25 @@
         "vmHibernate": {
             "value": false
         },
-        "bootDiagnostics": {
-            "value": {
-                "enabled": true
-            }
+        "availabilityOption": {
+            "value": "AvailabilityZone"
+        },
+        "availabilitySetName": {
+            "value": ""
+        },
+        "createAvailabilitySet": {
+            "value": false
+        },
+        "availabilitySetUpdateDomainCount": {
+            "value": 5
+        },
+        "availabilitySetFaultDomainCount": {
+            "value": 2
+        },
+        "availabilityZones": {
+            "value": [
+                3
+            ]
         },
         "securityType": {
             "value": "Standard"
@@ -72,6 +104,20 @@
         },
         "vTPM": {
             "value": false
+        },
+        "managedDiskSecurityEncryptionType": {
+            "value": "VMGuestStateOnly"
+        },
+        "integrityMonitoring": {
+            "value": false
+        },
+        "vmImageType": {
+            "value": "CustomImage"
+        },
+        "bootDiagnostics": {
+            "value": {
+                "enabled": true
+            }
         },
         "customConfigurationScriptUrl": {
             "value": ""
@@ -91,85 +137,8 @@
         "aadJoin": {
             "value": false
         },
-        "domain": {
-            "value": "roch.fisherassoc.com"
-        },
-        "ouPath": {
-            "value": "OU=VirtualDesktopsAzure,DC=Roch,DC=FisherAssoc,DC=com"
-        },
-        "addToWorkspace": {
-            "value": true
-        },
-        "virtualMachineTags": {
-            "value": {
-                "cm-resource-parent": "/subscriptions/171acb1b-5979-4f2a-8ba8-3a4fd4d72b68/resourceGroups/RG-TEST/providers/Microsoft.DesktopVirtualization/devopstest"
-            }
-        },
-        "apiVersion": {
-            "value": "2022-10-14-preview"
-        },
-        "deploymentId": {
-            "value": "3499cfac-f970-4ed8-813a-36bb4275f4b5"
-        },
-        "vmCustomImageSourceId": {
-            "value": "/subscriptions/171acb1b-5979-4f2a-8ba8-3a4fd4d72b68/resourceGroups/RG-AVD-EUS2/providers/Microsoft.Compute/galleries/FisherAssociatesAVDImages/images/NV5MultiSessionEnergyLandscape/versions/0.1.6"
-        },
-        "maxSessionLimit": {
-            "value": 10
-        },
-        "workspaceResourceGroup": {
-            "value": "RG-TEST"
-        },
-        "workSpaceName": {
-            "value": "avddevopstestappgroup"
-        },
-        "workspaceLocation": {
-            "value": "eastus2"
-        },
-        "allApplicationGroupReferences": {
-            "value": ""
-        },
-        "isNewWorkspace": {
-            "value": true
-        },
-        "systemData": {
-            "value": {
-                "aadJoinPreview": false,
-                "sessionHostConfigurationVersion": "",
-                "firstPartyExtension": false
-            }
-        },
-        "nestedTemplatesLocation": {
-            "value": "https://wvdportalstorageblob.blob.core.windows.net/galleryartifacts/armtemplates/Hostpool_1.0.02454.213/nestedTemplates/"
-        },
-        "tokenExpirationTime": {
-            "value": "2023-10-17T17:43:02.945Z"
-        },
-        "vmTemplate": {
-            "value": "{\"domain\":\"roch.fisherassoc.com\",\"galleryImageOffer\":null,\"galleryImagePublisher\":null,\"galleryImageSKU\":null,\"imageType\":\"CustomImage\",\"customImageId\":\"/subscriptions/171acb1b-5979-4f2a-8ba8-3a4fd4d72b68/resourceGroups/RG-AVD-EUS2/providers/Microsoft.Compute/galleries/FisherAssociatesAVDImages/images/NV5MultiSessionEnergyLandscape/versions/0.1.6\",\"namePrefix\":\"devopvmtst\",\"osDiskType\":\"StandardSSD_LRS\",\"vmSize\":{\"id\":\"Standard_NV6ads_A10_v5\",\"cores\":6,\"ram\":55,\"rdmaEnabled\":false,\"supportsMemoryPreservingMaintenance\":false},\"galleryItemId\":null,\"hibernate\":false,\"diskSizeGB\":0,\"securityType\":\"Standard\",\"secureBoot\":false,\"vTPM\":false}"
-        },
-        "availabilityOption": {
-            "value": "AvailabilityZone"
-        },
-        "availabilitySetName": {
-            "value": ""
-        },
-        "createAvailabilitySet": {
+        "intune": {
             "value": false
-        },
-        "availabilitySetUpdateDomainCount": {
-            "value": 5
-        },
-        "availabilitySetFaultDomainCount": {
-            "value": 2
-        },
-        "integrityMonitoring": {
-            "value": false
-        },
-        "availabilityZones": {
-            "value": [
-                3
-            ]
         },
         "administratorAccountUsername": {
             "value": "tcollins@roch.fisherassoc.com"
@@ -177,36 +146,52 @@
         "administratorAccountPassword": {
             "value": null
         },
+        "domain": {
+            "value": "roch.fisherassoc.com"
+        },
+        "ouPath": {
+            "value": "OU=VirtualDesktopsAzure,DC=Roch,DC=FisherAssoc,DC=com"
+        },
         "vmAdministratorAccountUsername": {
             "value": "avdadmin"
         },
         "vmAdministratorAccountPassword": {
             "value": null
         },
-        "managedDiskSecurityEncryptionType": {
-            "value": "VMGuestStateOnly"
-        },
-        "availabilitySetTags": {
-            "value": {
-                "cm-resource-parent": "/subscriptions/171acb1b-5979-4f2a-8ba8-3a4fd4d72b68/resourceGroups/RG-TEST/providers/Microsoft.DesktopVirtualization/devopstest"
-            }
-        },
-        "applicationGroupTags": {
-            "value": {
-                "cm-resource-parent": "/subscriptions/171acb1b-5979-4f2a-8ba8-3a4fd4d72b68/resourceGroups/RG-TEST/providers/Microsoft.DesktopVirtualization/devopstest"
-            }
-        },
-        "hostpoolTags": {
-            "value": {}
-        },
         "networkInterfaceTags": {
             "value": {
-                "cm-resource-parent": "/subscriptions/171acb1b-5979-4f2a-8ba8-3a4fd4d72b68/resourceGroups/RG-TEST/providers/Microsoft.DesktopVirtualization/devopstest"
+                "cm-resource-parent": "/subscriptions/171acb1b-5979-4f2a-8ba8-3a4fd4d72b68/resourcegroups/RG-TEST/providers/Microsoft.DesktopVirtualization/hostpools/devopstest"
             }
         },
         "networkSecurityGroupTags": {
             "value": {
-                "cm-resource-parent": "/subscriptions/171acb1b-5979-4f2a-8ba8-3a4fd4d72b68/resourceGroups/RG-TEST/providers/Microsoft.DesktopVirtualization/devopstest"
+                "cm-resource-parent": "/subscriptions/171acb1b-5979-4f2a-8ba8-3a4fd4d72b68/resourcegroups/RG-TEST/providers/Microsoft.DesktopVirtualization/hostpools/devopstest"
+            }
+        },
+        "availabilitySetTags": {
+            "value": {
+                "cm-resource-parent": "/subscriptions/171acb1b-5979-4f2a-8ba8-3a4fd4d72b68/resourceGroups/RG-TEST/providers/Microsoft.DesktopVirtualization/hostpools/devopstest"
+            }
+        },
+        "virtualMachineTags": {
+            "value": {
+                "cm-resource-parent": "/subscriptions/171acb1b-5979-4f2a-8ba8-3a4fd4d72b68/resourceGroups/RG-TEST/providers/Microsoft.DesktopVirtualization/hostpools/devopstest"
+            }
+        },
+        "deploymentId": {
+            "value": "3499cfac-f970-4ed8-813a-36bb4275f558"
+        },
+        "apiVersion": {
+            "value": "2022-10-14-preview"
+        },
+        "vmCustomImageSourceId": {
+            "value": "/subscriptions/171acb1b-5979-4f2a-8ba8-3a4fd4d72b68/resourceGroups/RG-AVD-EUS2/providers/Microsoft.Compute/galleries/FisherAssociatesAVDImages/images/NV5MultiSessionEnergyLandscape/versions/0.1.6"
+        },
+        "systemData": {
+            "value": {
+                "aadJoinPreview": false,
+                "sessionHostConfigurationVersion": "",
+                "firstPartyExtension": false
             }
         }
     }

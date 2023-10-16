@@ -33,5 +33,5 @@ steps:
     templateLocation: 'Linked artifact'
     csmFile: '$(System.DefaultWorkingDirectory)/arm-wvd-AddVirtualMachinesToHostPool/arm-wvd-AddVirtualMachinesTemplate.json'
     csmParametersFile: '$(System.DefaultWorkingDirectory)/arm-wvd-AddVirtualMachinesToHostPool/parameters.json'
-    overrideParameters: '-vmAdministratorAccountPassword “${{variables.vmlocaladmin}}” -administratorAccountPassword “${{variables.avd-ad-join}}” -hostpoolToken “${{variables.RdsRegistrationInfotoken}}”'
+    overrideParameters: '-vmAdministratorAccountPassword ${{variables.vmlocaladmin}} -administratorAccountPassword ${{variables.avd-ad-join}} -hostpoolToken ${{variables.RdsRegistrationInfotoken}}'
     deploymentMode: 'Incremental'

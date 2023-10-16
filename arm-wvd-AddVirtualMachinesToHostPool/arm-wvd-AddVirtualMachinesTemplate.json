@@ -126,13 +126,12 @@
       "defaultValue": 2,
       "allowedValues": [ 1, 2, 3 ]
     },
-    "availabilityZone": {
-      "type": "int",
-      "metadata": {
-        "description": "The number of availability zone to be used when create the VMs."
-      },
-      "defaultValue": 1,
-      "allowedValues": [ 1, 2, 3 ]
+    "availabilityZones": {
+            "type": "array",
+            "metadata": {
+                "description": "The availability zones to equally distribute VMs amongst"
+            },
+            "defaultValue": []
     },
     "vmResourceGroup": {
       "type": "string",
@@ -204,13 +203,6 @@
       },
       "defaultValue": ""
     },
-    "vmImageVhdUri": {
-      "type": "string",
-      "metadata": {
-        "description": "(Required when vmImageType = CustomVHD) URI of the sysprepped image vhd file to be used to create the session host VMs. For example, https://rdsstorage.blob.core.windows.net/vhds/sessionhostimage.vhd"
-      },
-      "defaultValue": ""
-    },
     "vmCustomImageSourceId": {
       "type": "string",
       "metadata": {
@@ -229,13 +221,6 @@
       "metadata": {
         "description": "The VM disk type for the VM: HDD or SSD."
       }
-    },
-    "storageAccountResourceGroupName": {
-      "type": "string",
-      "metadata": {
-        "description": "(Required when vmUseManagedDisks = False) The resource group containing the storage account of the image vhd file."
-      },
-      "defaultValue": ""
     },
     "existingVnetName": {
       "type": "string",
@@ -455,11 +440,8 @@
           "availabilitySetName": {
             "value": "[parameters('availabilitySetName')]"
           },
-          "availabilityZone": {
-            "value": "[parameters('availabilityZone')]"
-          },
-          "vmImageVhdUri": {
-            "value": "[parameters('vmImageVhdUri')]"
+          "availabilityZones": {
+            "value": "[parameters('availabilityZones')]"
           },
           "storageAccountResourceGroupName": {
             "value": "[parameters('storageAccountResourceGroupName')]"

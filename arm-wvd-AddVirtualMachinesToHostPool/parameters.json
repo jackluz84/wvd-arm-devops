@@ -85,6 +85,11 @@
         "availabilitySetFaultDomainCount": {
             "value": 2
         },
+        "availabilityZones": {
+            "value": [
+                3
+            ]
+        },
         "vmImageType": {
             "value": "CustomImage"
         },

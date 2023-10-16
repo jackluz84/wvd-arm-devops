@@ -16,3 +16,22 @@ steps:
 - script: |
     echo '$(System.DefaultWorkingDirectory)'
     dir
+    - task: AzurePowerShell@5
+      inputs:
+        azureSubscription: 'FA-ARM-serviceconnection'
+        ScriptType: 'FilePath'
+        ScriptPath: '$(System.DefaultWorkingDirectory)/arm-wvd-AddVirtualMachinesToHostPool/RdsRegistrationInfotoken.ps1'
+        azurePowerShellVersion: 'LatestVersion'
+    - task: AzureResourceManagerTemplateDeployment@3
+      inputs:
+        deploymentScope: 'Resource Group'
+        azureResourceManagerConnection: 'FA-ARM-serviceconnection'
+        subscriptionId: '171acb1b-5979-4f2a-8ba8-3a4fd4d72b68'
+        action: 'Create Or Update Resource Group'
+        resourceGroupName: 'RG-TEST'
+        location: 'East US 2'
+        templateLocation: 'Linked artifact'
+        csmFile: '$(System.DefaultWorkingDirectory)/arm-wvd-AddVirtualMachinesToHostPool/arm-wvd-AddVirtualMachinesTemplate.json'
+        csmParametersFile: '$(System.DefaultWorkingDirectory)/arm-wvd-AddVirtualMachinesToHostPool/parameters.json'
+        overrideParameters: '-administratorAccountPassword “$(avd-ad-join)” -hostpoolToken “$(RdsRegistrationInfotoken)”'
+        deploymentMode: 'Validation'

@@ -8,7 +8,7 @@ import-module az.compute
 
 $azureSubscriptionID = "171acb1b-5979-4f2a-8ba8-3a4fd4d72b68"
 $resourceGroupName = "RG-TEST"
-$existingWVDHostPoolName = "test"
+$existingWVDHostPoolName = "devopstest"
 
 
 #Obtain RdsRegistrationInfotoken

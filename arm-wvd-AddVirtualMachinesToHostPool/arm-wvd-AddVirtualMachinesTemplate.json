@@ -443,9 +443,6 @@
           "availabilityZones": {
             "value": "[parameters('availabilityZones')]"
           },
-          "storageAccountResourceGroupName": {
-            "value": "[parameters('storageAccountResourceGroupName')]"
-          },
           "vmGalleryImageOffer": {
             "value": "[parameters('vmGalleryImageOffer')]"
           },

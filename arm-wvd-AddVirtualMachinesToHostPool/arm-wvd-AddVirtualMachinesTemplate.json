@@ -230,12 +230,6 @@
         "description": "The VM disk type for the VM: HDD or SSD."
       }
     },
-    "vmUseManagedDisks": {
-      "type": "bool",
-      "metadata": {
-        "description": "True indicating you would like to use managed disks or false indicating you would like to use unmanaged disks."
-      }
-    },
     "storageAccountResourceGroupName": {
       "type": "string",
       "metadata": {

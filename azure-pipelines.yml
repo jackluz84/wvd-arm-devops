@@ -18,10 +18,12 @@ steps:
     dir
     - task: AzurePowerShell@5
       inputs:
+      workingDirectory: '$(System.DefaultWorkingDirectory)'
         azureSubscription: 'FA-ARM-serviceconnection'
         ScriptType: 'FilePath'
         ScriptPath: '$(System.DefaultWorkingDirectory)/arm-wvd-AddVirtualMachinesToHostPool/RdsRegistrationInfotoken.ps1'
         azurePowerShellVersion: 'LatestVersion'
+
     - task: AzureResourceManagerTemplateDeployment@3
       inputs:
         deploymentScope: 'Resource Group'

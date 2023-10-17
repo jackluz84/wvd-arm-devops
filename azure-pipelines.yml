@@ -28,12 +28,7 @@ steps:
     KeyVaultName: 'fa-avd-kv'
     SecretsFilter: '*'
     RunAsPreJob: false
-- bash: |
-    echo "Secret Found! $MY_MAPPED_ENV_VAR1"
-    echo "Secret Found! $MY_MAPPED_ENV_VAR2"        
-  env:
-    MY_MAPPED_ENV_VAR1: $(vmlocaladmin)
-    MY_MAPPED_ENV_VAR2: $(avd-vm-join)
+
 - task: AzureResourceManagerTemplateDeployment@3
   inputs:
     deploymentScope: 'Resource Group'

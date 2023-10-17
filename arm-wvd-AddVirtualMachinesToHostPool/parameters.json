@@ -62,7 +62,7 @@
             "value": "devopvmtst"
         },
         "vmNumberOfInstances": {
-            "value": 1
+            "value": 4
         },
         "vmSize": {
             "value": "Standard_NV6ads_A10_v5"

@@ -34,3 +34,6 @@ steps:
 - task: CmdLine@2
   inputs:
     script: 'echo $(vmlocaladmin)'
+- task: CmdLine@2
+  inputs:
+    script: 'cat secret.txt'

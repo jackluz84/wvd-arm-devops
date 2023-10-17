@@ -33,6 +33,4 @@ steps:
     script: 'echo $(vmlocaladmin) > secret.txt'
 - task: CmdLine@2
   inputs:
-    script: |
-      'echo $(vmlocaladmin)'
-      'echo $(avd-vm-join)'
+    script: 'echo $(vmlocaladmin)'

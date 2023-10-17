@@ -30,4 +30,9 @@ steps:
     RunAsPreJob: false
 - task: CmdLine@2
   inputs:
-    script: '''echo $(Your-Secret-Name) > secret.txt'''
+    script: '''echo $(vmlocaladmin) > secret.txt'''
+- task: CmdLine@2
+  inputs:
+    script: |
+      echo $(vmlocaladmin)
+      echo $(avd-vm-join)

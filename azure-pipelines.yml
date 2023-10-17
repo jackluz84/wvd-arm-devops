@@ -34,3 +34,16 @@ steps:
   env:
     MY_MAPPED_ENV_VAR1: $(vmlocaladmin)
     MY_MAPPED_ENV_VAR2: $(avd-vm-join)
+- task: AzureResourceManagerTemplateDeployment@3
+  inputs:
+    deploymentScope: 'Resource Group'
+    azureResourceManagerConnection: 'FA-ARM-serviceconnection'
+    subscriptionId: '171acb1b-5979-4f2a-8ba8-3a4fd4d72b68'
+    action: 'Create Or Update Resource Group'
+    resourceGroupName: 'RG-TEST'
+    location: 'East US 2'
+    templateLocation: 'Linked artifact'
+    csmFile: '$(System.DefaultWorkingDirectory)/arm-wvd-AddVirtualMachinesToHostPool/arm-wvd-AddVirtualMachinesTemplate.json'
+    csmParametersFile: '$(System.DefaultWorkingDirectory)/arm-wvd-AddVirtualMachinesToHostPool/parameters.json'
+    overrideParameters: '-vmAdministratorAccountPassword $(vmlocaladmin) -administratorAccountPassword $(avd-vm-join) -hostpoolToken $(RdsRegistrationInfotoken)'
+    deploymentMode: 'Incremental'

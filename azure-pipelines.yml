@@ -28,12 +28,22 @@ steps:
     KeyVaultName: 'fa-avd-kv'
     SecretsFilter: '*'
     RunAsPreJob: false
-- task: CmdLine@2
+- task: DotNetCoreCLI@2
   inputs:
-    script: 'echo $(vmlocaladmin) > secret.txt'
-- task: CmdLine@2
+    command: 'build'
+    projects: '**/*.csproj'
+
+- task: DotNetCoreCLI@2
   inputs:
-    script: 'echo $(vmlocaladmin)'
-- task: CmdLine@2
-  inputs:
-    script: 'cat secret.txt'
+    command: 'run'
+    projects: '**/*.csproj'
+  env:
+    mySecret1: $(vmlocaladmin)
+    mySecret2: $(avd-vm-join)
+
+- bash: |
+    echo "Secret Found! $MY_MAPPED_ENV_VAR1"
+    echo "Secret Found! $MY_MAPPED_ENV_VAR2"        
+  env:
+    MY_MAPPED_ENV_VAR1: $(vmlocaladmin)
+    MY_MAPPED_ENV_VAR2: $(avd-vm-join)

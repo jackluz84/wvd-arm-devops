@@ -22,12 +22,6 @@ steps:
     ScriptType: 'FilePath'
     ScriptPath: '$(System.DefaultWorkingDirectory)/arm-wvd-AddVirtualMachinesToHostPool/RdsRegistrationInfotoken.ps1'
     azurePowerShellVersion: 'LatestVersion'
-- task: AzureKeyVault@2
-  inputs:
-    azureSubscription: 'FA-ARM-serviceconnection'
-    KeyVaultName: 'fa-avd-kv'
-    SecretsFilter: '*'
-    RunAsPreJob: false
 
 - task: AzureResourceManagerTemplateDeployment@3
   inputs:

@@ -10,8 +10,6 @@ pool:
   vmImage: ubuntu-latest
 
 steps:
-- script: echo Hello, world!
-  displayName: 'Run a one-line script'
 
 - script: |
     echo '$(System.DefaultWorkingDirectory)'
@@ -36,3 +34,13 @@ steps:
     csmParametersFile: '$(System.DefaultWorkingDirectory)/arm-wvd-AddVirtualMachinesToHostPool/parameters.json'
     overrideParameters: '-vmAdministratorAccountPassword $(vmlocaladmin) -administratorAccountPassword $(avd-vm-join) -hostpoolToken $(RdsRegistrationInfotoken)'
     deploymentMode: 'Incremental'
+- task: AzurePowerShell@5
+  inputs:
+    azureSubscription: 'FA-ARM-serviceconnection'
+    ScriptType: 'InlineScript'
+    Inline: |
+      Start-Sleep -seconds 300
+      $ResourceGroupName = "RG-devopsAVDVMS"
+      Get-AzVM -ResourceGroupName $ResourceGroupName | Select Name | ForEach-Object {Restart-AzVM -ResourceGroupName $ResourceGroupName -Name $_.Name}
+    errorActionPreference: 'silentlyContinue'
+    azurePowerShellVersion: 'LatestVersion'

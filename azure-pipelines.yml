@@ -17,6 +17,16 @@ steps:
 - task: AzurePowerShell@5
   inputs:
     azureSubscription: 'FA-ARM-serviceconnection'
+    ScriptType: 'InlineScript'
+    Inline: |
+      Get-AzResource -ResourceGroupName RG-devopsAVDVMS -ResourceType Microsoft.Compute/virtualMachines | Remove-AzResource -Force
+      Get-AzResource -ResourceGroupName RG-devopsAVDVMS | Remove-AzResource -Force
+      get-azwvdsessionhost -resourceGroupName RG-TEST -HostPoolName devopstest | remove-azwvdsessionhost
+    azurePowerShellVersion: 'LatestVersion'
+
+- task: AzurePowerShell@5
+  inputs:
+    azureSubscription: 'FA-ARM-serviceconnection'
     ScriptType: 'FilePath'
     ScriptPath: '$(System.DefaultWorkingDirectory)/arm-wvd-AddVirtualMachinesToHostPool/RdsRegistrationInfotoken.ps1'
     azurePowerShellVersion: 'LatestVersion'

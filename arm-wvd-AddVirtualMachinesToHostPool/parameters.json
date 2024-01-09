@@ -28,7 +28,7 @@
                 "validationEnvironment": true,
                 "ring": null,
                 "registrationInfo": null,
-                "vmTemplate": "{\"domain\":\"roch.fisherassoc.com\",\"galleryImageOffer\":null,\"galleryImagePublisher\":null,\"galleryImageSKU\":null,\"imageType\":\"CustomImage\",\"customImageId\":\"/subscriptions/171acb1b-5979-4f2a-8ba8-3a4fd4d72b68/resourceGroups/RG-AVD-EUS2/providers/Microsoft.Compute/galleries/FisherAssociatesAVDImages/images/NV5MultiSessionEnergyLandscape/versions/0.1.7\",\"namePrefix\":\"devopvmtst\",\"osDiskType\":\"StandardSSD_LRS\",\"vmSize\":{\"id\":\"Standard_NV6ads_A10_v5\",\"cores\":6,\"ram\":55,\"rdmaEnabled\":false,\"supportsMemoryPreservingMaintenance\":false},\"galleryItemId\":null,\"hibernate\":false,\"diskSizeGB\":0,\"securityType\":\"Standard\",\"secureBoot\":false,\"vTPM\":false}",
+                "vmTemplate": "{\"domain\":\"roch.fisherassoc.com\",\"galleryImageOffer\":null,\"galleryImagePublisher\":null,\"galleryImageSKU\":null,\"imageType\":\"CustomImage\",\"customImageId\":\"/subscriptions/171acb1b-5979-4f2a-8ba8-3a4fd4d72b68/resourceGroups/RG-AVD-EUS2/providers/Microsoft.Compute/galleries/FisherAssociatesAVDImages/images/NV5MultiSessionEnergyLandscape/versions/latest\",\"namePrefix\":\"devopvmtst\",\"osDiskType\":\"StandardSSD_LRS\",\"vmSize\":{\"id\":\"Standard_NV6ads_A10_v5\",\"cores\":6,\"ram\":55,\"rdmaEnabled\":false,\"supportsMemoryPreservingMaintenance\":false},\"galleryItemId\":null,\"hibernate\":false,\"diskSizeGB\":0,\"securityType\":\"Standard\",\"secureBoot\":false,\"vTPM\":false}",
                 "preferredAppGroupType": "Desktop",
                 "migrationRequest": null,
                 "cloudPcResource": false,
@@ -62,7 +62,7 @@
             "value": "devopvmtst"
         },
         "vmNumberOfInstances": {
-            "value": 2
+            "value": 1
         },
         "vmSize": {
             "value": "Standard_NV6ads_A10_v5"
@@ -156,7 +156,7 @@
             "value": "2022-10-14-preview"
         },
         "vmCustomImageSourceId": {
-            "value": "/subscriptions/171acb1b-5979-4f2a-8ba8-3a4fd4d72b68/resourceGroups/RG-AVD-EUS2/providers/Microsoft.Compute/galleries/FisherAssociatesAVDImages/images/NV5MultiSessionEnergyLandscape/versions/0.1.7"
+            "value": "/subscriptions/171acb1b-5979-4f2a-8ba8-3a4fd4d72b68/resourceGroups/RG-AVD-EUS2/providers/Microsoft.Compute/galleries/FisherAssociatesAVDImages/images/NV5MultiSessionEnergyLandscape/versions/latest"
         }
     }
 }

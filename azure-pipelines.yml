@@ -14,16 +14,16 @@ steps:
 - script: |
     echo '$(System.DefaultWorkingDirectory)'
     dir
-- task: AzurePowerShell@5
-  inputs:
-    azureSubscription: 'FA-ARM-serviceconnection'
-    ScriptType: 'InlineScript'
-    Inline: |
-      Get-AzResource -ResourceGroupName RG-devopsAVDVMS -ResourceType Microsoft.Compute/virtualMachines | Remove-AzResource -Force -AsJob
-      start-sleep -seconds 200
-      Get-AzResource -ResourceGroupName RG-devopsAVDVMS | Remove-AzResource -Force -AsJob
-      get-azwvdsessionhost -resourceGroupName RG-TEST -HostPoolName devopstest | remove-azwvdsessionhost
-    azurePowerShellVersion: 'LatestVersion'
+#- task: AzurePowerShell@5
+#  inputs:
+#    azureSubscription: 'FA-ARM-serviceconnection'
+#    ScriptType: 'InlineScript'
+#    Inline: |
+#      Get-AzResource -ResourceGroupName RG-devopsAVDVMS -ResourceType Microsoft.Compute/virtualMachines | Remove-AzResource -Force -AsJob
+#      start-sleep -seconds 200
+#      Get-AzResource -ResourceGroupName RG-devopsAVDVMS | Remove-AzResource -Force -AsJob
+#      get-azwvdsessionhost -resourceGroupName RG-TEST -HostPoolName devopstest | remove-azwvdsessionhost
+#    azurePowerShellVersion: 'LatestVersion'
 
 - task: AzurePowerShell@5
   inputs:

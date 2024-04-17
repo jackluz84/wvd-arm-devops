@@ -1,0 +1,57 @@
+# Starter pipeline
+# Start with a minimal pipeline that you can customize to build and deploy your code.
+# Add steps that build, run tests, deploy, and more:
+# https://aka.ms/yaml
+
+trigger:
+- main
+
+pool:
+  vmImage: ubuntu-latest
+
+steps:
+
+- script: |
+    echo '$(System.DefaultWorkingDirectory)'
+    dir
+- task: AzurePowerShell@5
+  inputs:
+    azureSubscription: 'FA-ARM-serviceconnection'
+    ScriptType: 'InlineScript'
+    Inline: |
+      Get-AzResource -ResourceGroupName RG-devopsAVDVMS -ResourceType Microsoft.Compute/virtualMachines | Remove-AzResource -Force -AsJob
+      start-sleep -seconds 200
+      Get-AzResource -ResourceGroupName RG-devopsAVDVMS | Remove-AzResource -Force -AsJob
+      get-azwvdsessionhost -resourceGroupName RG-TEST -HostPoolName devopstest | remove-azwvdsessionhost
+    azurePowerShellVersion: 'LatestVersion'
+
+- task: AzurePowerShell@5
+  inputs:
+    azureSubscription: 'FA-ARM-serviceconnection'
+    ScriptType: 'FilePath'
+    ScriptPath: '$(System.DefaultWorkingDirectory)/arm-wvd-AddVirtualMachinesToHostPool/RdsRegistrationInfotoken.ps1'
+    azurePowerShellVersion: 'LatestVersion'
+
+- task: AzureResourceManagerTemplateDeployment@3
+  inputs:
+    deploymentScope: 'Resource Group'
+    azureResourceManagerConnection: 'FA-ARM-serviceconnection'
+    subscriptionId: '171acb1b-5979-4f2a-8ba8-3a4fd4d72b68'
+    action: 'Create Or Update Resource Group'
+    resourceGroupName: 'RG-TEST'
+    location: 'East US 2'
+    templateLocation: 'Linked artifact'
+    csmFile: '$(System.DefaultWorkingDirectory)/arm-wvd-AddVirtualMachinesToHostPool/arm-wvd-AddVirtualMachinesTemplate.json'
+    csmParametersFile: '$(System.DefaultWorkingDirectory)/arm-wvd-AddVirtualMachinesToHostPool/parameters.json'
+    overrideParameters: '-vmAdministratorAccountPassword $(vmlocaladmin) -administratorAccountPassword $(avd-vm-join) -hostpoolToken $(RdsRegistrationInfotoken)'
+    deploymentMode: 'Incremental'
+- task: AzurePowerShell@5
+  inputs:
+    azureSubscription: 'FA-ARM-serviceconnection'
+    ScriptType: 'InlineScript'
+    Inline: |
+      Start-Sleep -seconds 300
+      $ResourceGroupName = "RG-devopsAVDVMS"
+      Get-AzVM -ResourceGroupName $ResourceGroupName | Select Name | ForEach-Object {Restart-AzVM -ResourceGroupName $ResourceGroupName -Name $_.Name}
+    errorActionPreference: 'silentlyContinue'
+    azurePowerShellVersion: 'LatestVersion'

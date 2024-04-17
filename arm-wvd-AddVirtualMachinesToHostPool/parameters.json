@@ -71,10 +71,10 @@
             "value": "StandardSSD_LRS"
         },
         "availabilityOption": {
-            "value": "AvailabilityZone"
+            "value": "AvailabilitySet"
         },
         "availabilitySetName": {
-            "value": ""
+            "value": "AVD-AvailSet"
         },
         "createAvailabilitySet": {
             "value": false
@@ -86,9 +86,7 @@
             "value": 2
         },
         "availabilityZones": {
-            "value": [
-                3
-            ]
+            "value": []
         },
         "vmImageType": {
             "value": "CustomImage"

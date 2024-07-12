@@ -50,7 +50,7 @@
             "value": null
         },
         "vmInitialNumber": {
-            "value": 1
+            "value": 2
         },
         "vmResourceGroup": {
             "value": "RG-devopsAVDVMS"

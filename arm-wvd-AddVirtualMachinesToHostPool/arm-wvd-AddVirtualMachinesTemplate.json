@@ -337,16 +337,16 @@
         "description": "IMPORTANT: Please don't use this parameter as intune enrollment is not supported yet. True if intune enrollment is selected.  False otherwise"
       },
       "defaultValue": false
-    },
-    "capacityReservationGroupId": {
-            "type": "string",
-            "metadata": {
-              "description": "Capacity reservation group"
-            }
-    },
-    "osDiskDeleteOption": {
-            "type": "string"
-        }
+    }
+    //"capacityReservationGroupId": {
+    //        "type": "string",
+    //        "metadata": {
+    //          "description": "Capacity reservation group"
+    //        }
+    //},
+    //"osDiskDeleteOption": {
+     //       "type": "string"
+    //    }
   },
   "variables": {
     "rdshManagedDisks": "[if(equals(parameters('vmImageType'), 'CustomVHD'), parameters('vmUseManagedDisks'), bool('true'))]",
@@ -544,17 +544,16 @@
           },
           "_guidValue": {
             "value": "[parameters('deploymentId')]"
-          },
-          "capacityReservationGroupId": {
-            "value": "[parameters('capacityReservationGroupId')]"
-          },
-          "storageProfile": {
-             "osDisk": {
-                        "deleteOption": "[parameters('osDiskDeleteOption')]"
-                    }
+          }
+          //"capacityReservationGroupId": {
+          //  "value": "[parameters('capacityReservationGroupId')]"
+          //},
+          //"storageProfile": {
+          //   "osDisk": {
+          //              "deleteOption": "[parameters('osDiskDeleteOption')]"
+          //          }
       }
         }
-    }
   }
   ],
   "outputs": {

@@ -155,12 +155,12 @@
         },
         "vmCustomImageSourceId": {
             "value": "/subscriptions/171acb1b-5979-4f2a-8ba8-3a4fd4d72b68/resourceGroups/RG-AVD-EUS2/providers/Microsoft.Compute/galleries/FisherAssociatesAVDImages/images/NV5MultiSessionEnergyLandscape/versions/latest"
-        },
-        "capacityReservationGroupId": {
-            "value": "/subscriptions/171acb1b-5979-4f2a-8ba8-3a4fd4d72b68/resourcegroups/rg-avd-eus2/providers/microsoft.compute/capacityreservationgroups/testnv5_6"
-        },
-        "osDiskDeleteOption": {
-            "value": "Delete"
         }
-    }
+        //"capacityReservationGroupId": {
+        //    "value": "/subscriptions/171acb1b-5979-4f2a-8ba8-3a4fd4d72b68/resourcegroups/rg-avd-eus2/providers/microsoft.compute/capacityreservationgroups/testnv5_6"
+        //},
+        //"osDiskDeleteOption": {
+        //    "value": "Delete"
+        }
 }
+    

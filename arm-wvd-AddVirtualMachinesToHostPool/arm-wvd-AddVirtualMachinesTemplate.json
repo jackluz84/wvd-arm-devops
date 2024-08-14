@@ -552,10 +552,10 @@
              "osDisk": {
                         "deleteOption": "[parameters('osDiskDeleteOption')]"
                     }
-          
-        }
       }
+        }
     }
+  }
   ],
   "outputs": {
     "rdshVmNamesObject": {
